@@ -5,5 +5,6 @@ config.scheduling.hour_angle_bonus=0.3
 config.filters['u'].exposures=[40]
 config.filters['g'].exposures=[20]
 config.filters['r'].exposures=[20]
+config.filters['i'].exposures=[20]
 config.filters['z'].exposures=[20]
 config.filters['y'].exposures=[20]
