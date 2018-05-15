@@ -11,4 +11,5 @@ config.filters['i'].num_grouped_visits=1
 config.filters['i'].max_grouped_visits=1
 config.filters['z'].num_grouped_visits=1
 config.filters['z'].max_grouped_visits=1
+config.filters['y'].num_grouped_visits=1
 config.filters['y'].max_grouped_visits=1
