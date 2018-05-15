@@ -3,6 +3,8 @@ assert type(config)==lsst.sims.ocs.configuration.science.wide_fast_deep.WideFast
 config.scheduling.airmass_bonus=0.0
 config.scheduling.hour_angle_bonus=0.3
 config.scheduling.hour_angle_max=3.0
+config.filters['u'].num_grouped_visits=1
+config.filters['u'].max_grouped_visits=1
 config.filters['g'].num_grouped_visits=1
 config.filters['g'].max_grouped_visits=1
 config.filters['r'].num_grouped_visits=1
