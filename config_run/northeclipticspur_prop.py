@@ -3,3 +3,7 @@ assert type(config)==lsst.sims.ocs.configuration.science.north_ecliptic_spur.Nor
 config.scheduling.airmass_bonus=0.0
 config.scheduling.hour_angle_bonus=0.3
 config.scheduling.hour_angle_max=3.0
+config.filters['g'].exposures=[20]
+config.filters['r'].exposures=[20]
+config.filters['i'].exposures=[20]
+config.filters['z'].exposures=[20]
