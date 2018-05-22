@@ -5,7 +5,7 @@ __all__ = ["WideFastDeepRollingS"]
 @pexConfig.registerConfig("WideFastDeepRollingS", general_prop_reg, General)
 class WideFastDeepRolling(General):
     def setDefaults(self):
-        self.name = "WideFastDeepS""
+        self.name = "WideFastDeepS"
         # -------------------------
         # Sky Region specifications
         # -------------------------
