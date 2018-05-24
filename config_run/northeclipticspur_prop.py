@@ -7,3 +7,7 @@ config.filters['g'].exposures=[20]
 config.filters['r'].exposures=[20]
 config.filters['i'].exposures=[20]
 config.filters['z'].exposures=[20]
+config.filters['g'].num_visits=60
+config.filters['r'].num_visits=138
+config.filters['i'].num_visits=138
+config.filters['z'].num_visits=120
