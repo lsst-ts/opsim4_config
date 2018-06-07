@@ -4,7 +4,7 @@ assert type(config)==lsst.sims.ocs.configuration.survey.Survey, 'config is of ty
 config.idle_delay=60.0
 
 # The start date (format=YYYY-MM-DD) of the survey.
-config.start_date='2022-10-01'
+config.start_date='2022-10-02'
 
 # The list of available sequence proposals.
 config.sequence_proposals=['DeepDrillingCosmology1']
