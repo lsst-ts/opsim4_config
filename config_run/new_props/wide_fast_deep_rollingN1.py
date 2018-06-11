@@ -1,39 +1,29 @@
 import lsst.pex.config as pexConfig
 from lsst.sims.ocs.configuration.proposal import General, GeneralBandFilter, Selection, SelectionList, TimeRange
 from lsst.sims.ocs.configuration.proposal import general_prop_reg
-__all__ = ["WideFastDeepRollingAll"]
-@pexConfig.registerConfig("WideFastDeepRollingAll", general_prop_reg, General)
-class WideFastDeepRollingAll(General):
+__all__ = ["WideFastDeepRollingN1"]
+@pexConfig.registerConfig("WideFastDeepRollingN1", general_prop_reg, General)
+class WideFastDeepRollingN(General):
     def setDefaults(self):
-        self.name = "WideFastDeepA"
+        self.name = "WideFastDeepN1"
         # -------------------------
         # Sky Region specifications
         # -------------------------
         sel0 = Selection()
         sel0.limit_type = "Dec"
-        sel0.minimum_limit = -62.5
+        sel0.minimum_limit = -24.7
         sel0.maximum_limit = 2.8
-        sel1 = Selection()
-        sel1.limit_type = "Dec"
-        sel1.minimum_limit = -62.5
-        sel1.maximum_limit = 2.8
-        self.sky_region.selections = {0: sel0,
-                                      1: sel1}
+        self.sky_region.selections = {0: sel0}
 
         time_range0 = TimeRange()
-        time_range0.start = 1
-        time_range0.end = 365
-        time_range1 = TimeRange()
-        time_range1.start = 3286
-        time_range1.end = 3650
-        self.sky_region.time_ranges = {0: time_range0,
-                                       1: time_range1}
+        time_range0.start = 366
+        time_range0.end = 730
+        self.sky_region.time_ranges = {0: time_range0}
+
         sel_map0 = SelectionList()
         sel_map0.indexes = [0]
-        sel_map1 = SelectionList()
-        sel_map1.indexes = [1]
-        self.sky_region.selection_mapping = {0: sel_map0,
-                                             1: sel_map1}
+        self.sky_region.selection_mapping = {0: sel_map0}
+
         # ----------------------------
         # Sky Exclusion specifications
         # ----------------------------
@@ -78,7 +68,7 @@ class WideFastDeepRollingAll(General):
         # --------------------------
         u_filter = GeneralBandFilter()
         u_filter.name = 'u'
-        u_filter.num_visits = 75
+        u_filter.num_visits = 13
         u_filter.num_grouped_visits = 1
         u_filter.bright_limit = 21.3
         u_filter.dark_limit = 30.0
@@ -86,7 +76,7 @@ class WideFastDeepRollingAll(General):
         u_filter.exposures = [15.0, 15.0]
         g_filter = GeneralBandFilter()
         g_filter.name = 'g'
-        g_filter.num_visits = 105
+        g_filter.num_visits = 18
         g_filter.num_grouped_visits = 2
         g_filter.bright_limit = 21.0
         g_filter.dark_limit = 30.0
@@ -94,7 +84,7 @@ class WideFastDeepRollingAll(General):
         g_filter.exposures = [15.0, 15.0]
         r_filter = GeneralBandFilter()
         r_filter.name = 'r'
-        r_filter.num_visits = 240
+        r_filter.num_visits = 40
         r_filter.num_grouped_visits = 2
         r_filter.bright_limit = 20.25
         r_filter.dark_limit = 30.0
@@ -102,7 +92,7 @@ class WideFastDeepRollingAll(General):
         r_filter.exposures = [15.0, 15.0]
         i_filter = GeneralBandFilter()
         i_filter.name = 'i'
-        i_filter.num_visits = 240
+        i_filter.num_visits = 40
         i_filter.num_grouped_visits = 2
         i_filter.bright_limit = 19.5
         i_filter.dark_limit = 30.0
@@ -110,7 +100,7 @@ class WideFastDeepRollingAll(General):
         i_filter.exposures = [15.0, 15.0]
         z_filter = GeneralBandFilter()
         z_filter.name = 'z'
-        z_filter.num_visits = 210
+        z_filter.num_visits = 35
         z_filter.num_grouped_visits = 2
         z_filter.bright_limit = 17.0
         z_filter.dark_limit = 21.0
@@ -118,7 +108,7 @@ class WideFastDeepRollingAll(General):
         z_filter.exposures = [15.0, 15.0]
         y_filter = GeneralBandFilter()
         y_filter.name = 'y'
-        y_filter.num_visits = 210
+        y_filter.num_visits = 35
         y_filter.num_grouped_visits = 1
         y_filter.bright_limit = 16.5
         y_filter.dark_limit = 21.0
