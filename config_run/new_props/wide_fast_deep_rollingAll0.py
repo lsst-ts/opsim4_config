@@ -1,23 +1,23 @@
 import lsst.pex.config as pexConfig
 from lsst.sims.ocs.configuration.proposal import General, GeneralBandFilter, Selection, SelectionList, TimeRange
 from lsst.sims.ocs.configuration.proposal import general_prop_reg
-__all__ = ["WideFastDeepRollingN2"]
-@pexConfig.registerConfig("WideFastDeepRollingN2", general_prop_reg, General)
-class WideFastDeepRollingN(General):
+__all__ = ["WideFastDeepRollingAll0"]
+@pexConfig.registerConfig("WideFastDeepRollingAll0", general_prop_reg, General)
+class WideFastDeepRollingAll(General):
     def setDefaults(self):
-        self.name = "WideFastDeepN2"
+        self.name = "WideFastDeepA0"
         # -------------------------
         # Sky Region specifications
         # -------------------------
         sel0 = Selection()
         sel0.limit_type = "Dec"
-        sel0.minimum_limit = -24.7
+        sel0.minimum_limit = -62.5
         sel0.maximum_limit = 2.8
         self.sky_region.selections = {0: sel0}
 
         time_range0 = TimeRange()
-        time_range0.start = 1096
-        time_range0.end = 1460
+        time_range0.start = 1
+        time_range0.end = 365
         self.sky_region.time_ranges = {0: time_range0}
 
         sel_map0 = SelectionList()
@@ -68,7 +68,7 @@ class WideFastDeepRollingN(General):
         # --------------------------
         u_filter = GeneralBandFilter()
         u_filter.name = 'u'
-        u_filter.num_visits = 13
+        u_filter.num_visits = 15
         u_filter.num_grouped_visits = 1
         u_filter.bright_limit = 21.3
         u_filter.dark_limit = 30.0
@@ -76,7 +76,7 @@ class WideFastDeepRollingN(General):
         u_filter.exposures = [15.0, 15.0]
         g_filter = GeneralBandFilter()
         g_filter.name = 'g'
-        g_filter.num_visits = 18
+        g_filter.num_visits = 21
         g_filter.num_grouped_visits = 2
         g_filter.bright_limit = 21.0
         g_filter.dark_limit = 30.0
@@ -84,7 +84,7 @@ class WideFastDeepRollingN(General):
         g_filter.exposures = [15.0, 15.0]
         r_filter = GeneralBandFilter()
         r_filter.name = 'r'
-        r_filter.num_visits = 40
+        r_filter.num_visits = 48
         r_filter.num_grouped_visits = 2
         r_filter.bright_limit = 20.25
         r_filter.dark_limit = 30.0
@@ -92,7 +92,7 @@ class WideFastDeepRollingN(General):
         r_filter.exposures = [15.0, 15.0]
         i_filter = GeneralBandFilter()
         i_filter.name = 'i'
-        i_filter.num_visits = 40
+        i_filter.num_visits = 48
         i_filter.num_grouped_visits = 2
         i_filter.bright_limit = 19.5
         i_filter.dark_limit = 30.0
@@ -100,7 +100,7 @@ class WideFastDeepRollingN(General):
         i_filter.exposures = [15.0, 15.0]
         z_filter = GeneralBandFilter()
         z_filter.name = 'z'
-        z_filter.num_visits = 35
+        z_filter.num_visits = 42
         z_filter.num_grouped_visits = 2
         z_filter.bright_limit = 17.0
         z_filter.dark_limit = 21.0
@@ -108,7 +108,7 @@ class WideFastDeepRollingN(General):
         z_filter.exposures = [15.0, 15.0]
         y_filter = GeneralBandFilter()
         y_filter.name = 'y'
-        y_filter.num_visits = 35
+        y_filter.num_visits = 42
         y_filter.num_grouped_visits = 1
         y_filter.bright_limit = 16.5
         y_filter.dark_limit = 21.0

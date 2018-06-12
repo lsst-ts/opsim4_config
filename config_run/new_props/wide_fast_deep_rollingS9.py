@@ -1,23 +1,23 @@
 import lsst.pex.config as pexConfig
 from lsst.sims.ocs.configuration.proposal import General, GeneralBandFilter, Selection, SelectionList, TimeRange
 from lsst.sims.ocs.configuration.proposal import general_prop_reg
-__all__ = ["WideFastDeepRollingN4"]
-@pexConfig.registerConfig("WideFastDeepRollingN4", general_prop_reg, General)
-class WideFastDeepRollingN(General):
+__all__ = ["WideFastDeepRollingS9"]
+@pexConfig.registerConfig("WideFastDeepRollingS9", general_prop_reg, General)
+class WideFastDeepRollingS(General):
     def setDefaults(self):
-        self.name = "WideFastDeepN4"
+        self.name = "WideFastDeepS9"
         # -------------------------
         # Sky Region specifications
         # -------------------------
         sel0 = Selection()
         sel0.limit_type = "Dec"
-        sel0.minimum_limit = -15.2
-        sel0.maximum_limit = 2.8
+        sel0.minimum_limit = -62.5
+        sel0.maximum_limit = -35.0
         self.sky_region.selections = {0: sel0}
 
         time_range0 = TimeRange()
-        time_range0.start = 1341
-        time_range0.end = 1665
+        time_range0.start = 2964
+        time_range0.end = 3287
         self.sky_region.time_ranges = {0: time_range0}
 
         sel_map0 = SelectionList()
