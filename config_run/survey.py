@@ -10,5 +10,5 @@ config.general_proposals=['GalacticPlane', 'NorthEclipticSpur', 'SouthCelestialP
                           'WideFastDeepRollingS6',
                           'WideFastDeepRollingN7',
                           'WideFastDeepRollingM8',
-                          'WideFastDeepRollingS9'
+                          'WideFastDeepRollingS9',
                           'WideFastDeepRollingAll10']
