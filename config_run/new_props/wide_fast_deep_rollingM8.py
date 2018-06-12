@@ -11,7 +11,7 @@ class WideFastDeepRollingS(General):
         # -------------------------
         sel0 = Selection()
         sel0.limit_type = "Dec"
-        sel0.minimum_limit = -30.0
+        sel0.minimum_limit = -35.0
         sel0.maximum_limit = -15.2
         self.sky_region.selections = {0: sel0}
 
