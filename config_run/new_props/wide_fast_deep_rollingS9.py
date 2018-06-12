@@ -3,7 +3,7 @@ from lsst.sims.ocs.configuration.proposal import General, GeneralBandFilter, Sel
 from lsst.sims.ocs.configuration.proposal import general_prop_reg
 __all__ = ["WideFastDeepRollingS9"]
 @pexConfig.registerConfig("WideFastDeepRollingS9", general_prop_reg, General)
-class WideFastDeepRollingS(General):
+class WideFastDeepRollingS9(General):
     def setDefaults(self):
         self.name = "WideFastDeepS9"
         # -------------------------
