@@ -9,57 +9,46 @@ class WideFastDeepRolling(General):
         # -------------------------
         # Sky Region specifications
         # -------------------------
-        #A0
         sel0 = Selection()
         sel0.limit_type = "Dec"
         sel0.minimum_limit = -62.5
         sel0.maximum_limit = 2.8
-        #N1
         sel1 = Selection()
         sel1.limit_type = "Dec"
         sel1.minimum_limit = -15.2
         sel1.maximum_limit = 2.8
-        #M2
         sel2 = Selection()
         sel2.limit_type = "Dec"
         sel2.minimum_limit = -35.0
         sel2.maximum_limit = -15.2
-        #S3
         sel3 = Selection()
         sel3.limit_type = "Dec"
         sel3.minimum_limit = -62.5
         sel3.maximum_limit = -35.0
-        #N4
         sel4 = Selection()
         sel4.limit_type = "Dec"
         sel4.minimum_limit = -15.2
         sel4.maximum_limit = 2.8
-        #M5
         sel5 = Selection()
         sel5.limit_type = "Dec"
         sel5.minimum_limit = -35.0
         sel5.maximum_limit = -15.2
-        #S6
         sel6 = Selection()
         sel6.limit_type = "Dec"
         sel6.minimum_limit = -62.5
         sel6.maximum_limit = -35.0
-        #N7
         sel7 = Selection()
         sel7.limit_type = "Dec"
         sel7.minimum_limit = -15.2
         sel7.maximum_limit = 2.8
-        #M8
         sel8 = Selection()
         sel8.limit_type = "Dec"
         sel8.minimum_limit = -35.0
         sel8.maximum_limit = -15.2
-        #S9
         sel9 = Selection()
         sel9.limit_type = "Dec"
         sel9.minimum_limit = -62.5
         sel9.maximum_limit = -35.0
-        #A10
         sel10 = Selection()
         sel10.limit_type = "Dec"
         sel10.minimum_limit = -62.5
