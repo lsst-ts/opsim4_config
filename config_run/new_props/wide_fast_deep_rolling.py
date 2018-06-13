@@ -58,7 +58,7 @@ class WideFastDeepRolling(General):
                                       6: sel6,
                                       7: sel7,
                                       8: sel8,
-                                      9: sel9
+                                      9: sel9}
         time_range0 = TimeRange()
         time_range0.start = 1
         time_range0.end = 365
