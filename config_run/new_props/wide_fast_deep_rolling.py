@@ -9,48 +9,51 @@ class WideFastDeepRolling(General):
         # -------------------------
         # Sky Region specifications
         # -------------------------
-        sel0 = Selection()
-        sel0.limit_type = "Dec"
-        sel0.minimum_limit = -62.5
-        sel0.maximum_limit = 2.8
         sel1 = Selection()
         sel1.limit_type = "Dec"
-        sel1.minimum_limit = -15.2
+        sel1.minimum_limit = -62.5
         sel1.maximum_limit = 2.8
         sel2 = Selection()
         sel2.limit_type = "Dec"
-        sel2.minimum_limit = -35.0
-        sel2.maximum_limit = -15.2
+        sel2.minimum_limit = -15.2
+        sel2.maximum_limit = 2.8
         sel3 = Selection()
         sel3.limit_type = "Dec"
-        sel3.minimum_limit = -62.5
-        sel3.maximum_limit = -35.0
+        sel3.minimum_limit = -35.0
+        sel3.maximum_limit = -15.2
         sel4 = Selection()
         sel4.limit_type = "Dec"
-        sel4.minimum_limit = -15.2
-        sel4.maximum_limit = 2.8
+        sel4.minimum_limit = -62.5
+        sel4.maximum_limit = -35.0
         sel5 = Selection()
         sel5.limit_type = "Dec"
-        sel5.minimum_limit = -35.0
-        sel5.maximum_limit = -15.2
+        sel5.minimum_limit = -15.2
+        sel5.maximum_limit = 2.8
         sel6 = Selection()
         sel6.limit_type = "Dec"
-        sel6.minimum_limit = -62.5
-        sel6.maximum_limit = -35.0
+        sel6.minimum_limit = -35.0
+        sel6.maximum_limit = -15.2
         sel7 = Selection()
         sel7.limit_type = "Dec"
-        sel7.minimum_limit = -15.2
-        sel7.maximum_limit = 2.8
+        sel7.minimum_limit = -62.5
+        sel7.maximum_limit = -35.0
         sel8 = Selection()
         sel8.limit_type = "Dec"
-        sel8.minimum_limit = -35.0
-        sel8.maximum_limit = -15.2
+        sel8.minimum_limit = -15.2
+        sel8.maximum_limit = 2.8
         sel9 = Selection()
         sel9.limit_type = "Dec"
-        sel9.minimum_limit = -62.5
-        sel9.maximum_limit = -35.0
-        self.sky_region.selections = {0: sel0,
-                                      1: sel1,
+        sel9.minimum_limit = -35.0
+        sel9.maximum_limit = -15.2
+        sel10 = Selection()
+        sel10.limit_type = "Dec"
+        sel10.minimum_limit = -62.5
+        sel10.maximum_limit = -35.0
+        sel11 = Selection()
+        sel11.limit_type = "Dec"
+        sel11.minimum_limit = -62.5
+        sel11.maximum_limit = 2.8
+        self.sky_region.selections = {1: sel1,
                                       2: sel2,
                                       3: sel3,
                                       4: sel4,
@@ -58,39 +61,43 @@ class WideFastDeepRolling(General):
                                       6: sel6,
                                       7: sel7,
                                       8: sel8,
-                                      9: sel9}
-        time_range0 = TimeRange()
-        time_range0.start = 1
-        time_range0.end = 365
+                                      9: sel9,
+                                      10: sel10,
+                                      11: sel11}
         time_range1 = TimeRange()
-        time_range1.start = 366
-        time_range1.end = 690
+        time_range1.start = 1
+        time_range1.end = 365
         time_range2 = TimeRange()
-        time_range2.start = 691
-        time_range2.end = 1015
+        time_range2.start = 366
+        time_range2.end = 690
         time_range3 = TimeRange()
-        time_range3.start = 1016
-        time_range3.end = 1340
+        time_range3.start = 691
+        time_range3.end = 1015
         time_range4 = TimeRange()
-        time_range4.start = 1341
-        time_range4.end = 1665
+        time_range4.start = 1016
+        time_range4.end = 1340
         time_range5 = TimeRange()
-        time_range5.start = 1666
-        time_range5.end = 1990
+        time_range5.start = 1341
+        time_range5.end = 1665
         time_range6 = TimeRange()
-        time_range6.start = 1991
-        time_range6.end = 2315
+        time_range6.start = 1666
+        time_range6.end = 1990
         time_range7 = TimeRange()
-        time_range7.start = 2316
-        time_range7.end = 2639
+        time_range7.start = 1991
+        time_range7.end = 2315
         time_range8 = TimeRange()
-        time_range8.start = 2640
-        time_range8.end = 2963
+        time_range8.start = 2316
+        time_range8.end = 2639
         time_range9 = TimeRange()
-        time_range9.start = 2964
-        time_range9.end = 3287
-        self.sky_region.time_ranges = {0: time_range0,
-                                       1: time_range1,
+        time_range9.start = 2640
+        time_range9.end = 2963
+        time_range10 = TimeRange()
+        time_range10.start = 2964
+        time_range10.end = 3287
+        time_range11 = TimeRange()
+        time_range11.start = 3288
+        time_range11.end = 3650
+        self.sky_region.time_ranges = {1: time_range1,
                                        2: time_range2,
                                        3: time_range3,
                                        4: time_range4,
@@ -98,9 +105,9 @@ class WideFastDeepRolling(General):
                                        6: time_range6,
                                        7: time_range7,
                                        8: time_range8,
-                                       9: time_range9}
-        sel_map0 = SelectionList()
-        sel_map0.indexes = [0]
+                                       9: time_range9,
+                                       10: time_range10,
+                                       11: time_range11}
         sel_map1 = SelectionList()
         sel_map1.indexes = [1]
         sel_map2 = SelectionList()
@@ -119,8 +126,11 @@ class WideFastDeepRolling(General):
         sel_map8.indexes = [8]
         sel_map9 = SelectionList()
         sel_map9.indexes = [9]
-        self.sky_region.selection_mapping = {0: sel_map0,
-                                             1: sel_map1,
+        sel_map10 = SelectionList()
+        sel_map10.indexes = [10]
+        sel_map11 = SelectionList()
+        sel_map11.indexes = [11]
+        self.sky_region.selection_mapping = {1: sel_map1,
                                              2: sel_map2,
                                              3: sel_map3,
                                              4: sel_map4,
@@ -128,7 +138,9 @@ class WideFastDeepRolling(General):
                                              6: sel_map6,
                                              7: sel_map7,
                                              8: sel_map8,
-                                             9: sel_map9}
+                                             9: sel_map9,
+                                             10: sel_map10,
+                                             11: sel_map11}
 
         # ----------------------------
         # Sky Exclusion specifications
