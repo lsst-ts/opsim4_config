@@ -173,7 +173,7 @@ class WideFastDeepRolling(General):
         # --------------------------
         u_filter = GeneralBandFilter()
         u_filter.name = 'u'
-        u_filter.num_visits = 75
+        u_filter.num_visits = 56
         u_filter.num_grouped_visits = 1
         u_filter.bright_limit = 21.3
         u_filter.dark_limit = 30.0
@@ -181,7 +181,7 @@ class WideFastDeepRolling(General):
         u_filter.exposures = [15.0, 15.0]
         g_filter = GeneralBandFilter()
         g_filter.name = 'g'
-        g_filter.num_visits = 105
+        g_filter.num_visits = 79
         g_filter.num_grouped_visits = 2
         g_filter.bright_limit = 21.0
         g_filter.dark_limit = 30.0
@@ -189,7 +189,7 @@ class WideFastDeepRolling(General):
         g_filter.exposures = [15.0, 15.0]
         r_filter = GeneralBandFilter()
         r_filter.name = 'r'
-        r_filter.num_visits = 240
+        r_filter.num_visits = 180
         r_filter.num_grouped_visits = 2
         r_filter.bright_limit = 20.25
         r_filter.dark_limit = 30.0
@@ -197,7 +197,7 @@ class WideFastDeepRolling(General):
         r_filter.exposures = [15.0, 15.0]
         i_filter = GeneralBandFilter()
         i_filter.name = 'i'
-        i_filter.num_visits = 240
+        i_filter.num_visits = 180
         i_filter.num_grouped_visits = 2
         i_filter.bright_limit = 19.5
         i_filter.dark_limit = 30.0
@@ -205,7 +205,7 @@ class WideFastDeepRolling(General):
         i_filter.exposures = [15.0, 15.0]
         z_filter = GeneralBandFilter()
         z_filter.name = 'z'
-        z_filter.num_visits = 210
+        z_filter.num_visits = 158
         z_filter.num_grouped_visits = 2
         z_filter.bright_limit = 17.0
         z_filter.dark_limit = 21.0
@@ -213,7 +213,7 @@ class WideFastDeepRolling(General):
         z_filter.exposures = [15.0, 15.0]
         y_filter = GeneralBandFilter()
         y_filter.name = 'y'
-        y_filter.num_visits = 210
+        y_filter.num_visits = 158
         y_filter.num_grouped_visits = 1
         y_filter.bright_limit = 16.5
         y_filter.dark_limit = 21.0
