@@ -1,5 +1,5 @@
-import lsst.sims.ocs.configuration.survey
-assert type(config)==lsst.sims.ocs.configuration.survey.Survey, 'config is of type %s.%s instead of lsst.sims.ocs.configuration.survey.Survey' % (type(config).__module__, type(config).__name__)
+import lsst.ts.schedulerConfig.survey
+assert type(config)==lsst.ts.schedulerConfig.survey.Survey, 'config is of type %s.%s instead of lsst.ts.schedulerConfig.survey.Survey' % (type(config).__module__, type(config).__name__)
 # The delay (units=seconds) to skip the simulation time forward when not receiving a target.
 config.idle_delay=60.0
 
