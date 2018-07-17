@@ -1,4 +1,13 @@
+"""
+This is an example configuration for the Feature Based Scheduler. The if statement is used to bypass the configuration
+expect when instantiated by the Feature Scheduler Driver. Note that we import and fill in a SurveyTopology class that
+informs the (S)OCS about the projects defined on the configuration.
 
+The only things that cannot be changed here are the names of the variables survey_topoly and scheduler. It is possible
+as those are expected by the Driver. The way those objects are configured are entirely up to the user though.
+
+07/2018 - Version 0
+"""
 import numpy as np
 import healpy as hp
 import lsst.sims.featureScheduler as fs
