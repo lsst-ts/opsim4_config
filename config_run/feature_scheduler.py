@@ -58,6 +58,42 @@ if __name__ == 'config':
 
     nside = fs.set_default_nside(nside=32)
 
+    # Let's set up some alt_az maps
+    # XXX--this is an initial guess at what reasoable blocks might look like!
+    alt_az_blockmaps = []
+    hpids = np.arange(hp.nside2npix(nside))
+    az, alt = _hpid2RaDec(nside, hpids)
+
+    # XXX--seem like reasonable numbers, but who knows if they are hte best!
+    alt_low_limit = np.radians(20.)
+    alt_high_limit = np.radians(82.)
+    az_half_width = np.radians(15.)
+
+    blank_map = hpids * 0.
+    good = np.where(((az > 2. * np.pi - az_half_width) | (az < az_half_width)) &
+                    (alt > alt_low_limit) & (alt < alt_high_limit))
+    new_map = blank_map + 0
+    new_map[good] = 1
+    alt_az_blockmaps.append(new_map)
+
+    good = np.where(((az > np.pi - az_half_width) & (az < np.pi + az_half_width)) &
+                    (alt > alt_low_limit) & (alt < alt_high_limit))
+    new_map = blank_map + 0
+    new_map[good] = 1
+    alt_az_blockmaps.append(new_map)
+
+    # let's make some finer grained steps. Bring up the lower limit a bit.
+    alt_high_limit = np.radians(75.)
+    alt_low_limit = np.radians(35.)
+
+    steps = np.arange(20, 330, 20)
+    for step in steps:
+        good = np.where((az > np.radians(step)) & (az < np.radians(step) + az_half_width * 2) &
+                        (alt > alt_low_limit) & (alt < alt_high_limit))
+        new_map = blank_map + 0
+        new_map[good] = 1
+        alt_az_blockmaps.append(new_map)
+
     # get rid of silly northern strip.
     target_map = standard_goals(nside=nside)
 
