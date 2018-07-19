@@ -30,23 +30,29 @@ if __name__ == 'config':
         result = {}
         result['u'] = fs.generate_goal_map(nside=nside, NES_fraction=0.,
                                            WFD_fraction=0.31, SCP_fraction=0.15,
-                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.)
+                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                           generate_id_map=True)
         result['g'] = fs.generate_goal_map(nside=nside, NES_fraction=0.2,
                                            WFD_fraction=0.44, SCP_fraction=0.15,
-                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.)
+                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                           generate_id_map=True)
         result['r'] = fs.generate_goal_map(nside=nside, NES_fraction=0.46,
                                            WFD_fraction=1.0, SCP_fraction=0.15,
-                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.)
+                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                           generate_id_map=True)
         result['i'] = fs.generate_goal_map(nside=nside, NES_fraction=0.46,
                                            WFD_fraction=1.0, SCP_fraction=0.15,
-                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.)
+                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                           generate_id_map=True)
         result['z'] = fs.generate_goal_map(nside=nside, NES_fraction=0.4,
                                            WFD_fraction=0.9, SCP_fraction=0.15,
-                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.)
+                                           GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                           generate_id_map=True)
         result['y'] = fs.generate_goal_map(nside=nside, NES_fraction=0.,
                                            WFD_fraction=0.9, SCP_fraction=0.15,
                                            GP_fraction=0.15,
-                                           WFD_upper_edge_fraction=0.)
+                                           WFD_upper_edge_fraction=0.,
+                                           generate_id_map=True)
 
         return result
 
