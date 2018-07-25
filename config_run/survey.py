@@ -13,3 +13,6 @@ config.start_date='2022-10-01'
 
 # The fractional duration (units=years) of the survey.
 config.duration=10.0
+
+# Don't do any of the usual proposal surveys
+config.general_proposals=[]
