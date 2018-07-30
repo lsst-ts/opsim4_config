@@ -117,7 +117,7 @@ if __name__ == 'config':
         #                                               max_duration=90.))
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
-        weights = np.array([2., 0.1, .1, 1., 3., 1.5, 1.0, 1.0, 1.0])
+        weights = np.array([2., 0.1, filter_prop[filtername], 1., 3., 1.5, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
