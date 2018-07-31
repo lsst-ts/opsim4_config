@@ -71,7 +71,7 @@ if __name__ == 'config':
                                                   zenith_pad=z_pad))
         # bfs.append(fs.HADecAltAzPatchBasisFunction(nside=nside,
         #                                            patches=patches[::-1]))
-        bfs.append(fs.Agreesive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=20.))
+        bfs.append(fs.Agreesive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=120.))
         # bfs.append(fs.Strict_filter_basis_function(filtername=filtername,
         #                                            tag=[3],
         #                                            time_lag_min=90.,
@@ -89,7 +89,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([2., 1., 1., .5, 1., 1.0, 1.0])
+        weights = np.array([2., 1., 1., .5, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
