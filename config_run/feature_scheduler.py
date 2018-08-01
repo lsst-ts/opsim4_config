@@ -36,8 +36,8 @@ if __name__ == 'config':
                                             gp_cloud_max=0.7,
                                             nes_cloud_max=0.7)
 
-    width = (30.,)
-    z_pad = (38.,)
+    width = (20.,)
+    z_pad = (28.,)
     weight = (1.,)
     height = (80.,)
 
@@ -57,14 +57,14 @@ if __name__ == 'config':
     for filtername in filters:
         bfs = list()
         # bfs.append(fs.M5_diff_basis_function(filtername=filtername, nside=nside))
-        bfs.append(fs.HourAngle_bonus_basis_function(max_hourangle=3.))
+        bfs.append(fs.HourAngle_bonus_basis_function(max_hourangle=6.))
         #     bfs.append(fs.Skybrightness_limit_basis_function(nside=nside,
         #                                                      filtername=filtername,
         #                                                      min=sb_limit_map[filtername]['min'],
         #                                                      max=sb_limit_map[filtername]['max']))
         bfs.append(fs.Normalized_Target_map_basis_function(filtername=filtername,
                                                            target_map=target_maps[filtername][0],
-                                                           out_of_bounds_val=hp.UNSEEN, nside=nside))
+                                                           out_of_bounds_val=hp.UNSEEN, nside=nside, max_diff=1.))
         bfs.append(fs.MeridianStripeBasisFunction(nside=nside, width=width,
                                                   weight=weight,
                                                   height=height,
@@ -81,7 +81,7 @@ if __name__ == 'config':
         #                                            unseen_before_lag=True,
         #                                            proportion=None,
         #                                            aways_available=filtername in 'rizy'))
-        bfs.append(fs.Avoid_Fast_Revists(filtername=None, gap_min=1800., nside=nside))  # Hide region for 2 hours!
+        bfs.append(fs.Avoid_Fast_Revists(filtername=None, gap_min=120., nside=nside))  # Hide region for 2 hours!
         bfs.append(fs.Bulk_cloud_basis_function(max_cloud_map=cloud_map, nside=nside))
         bfs.append(fs.Moon_avoidance_basis_function(nside=nside, moon_distance=40.))
         # bfs.append(fs.CableWrap_unwrap_basis_function(nside=nside, activate_tol=70., unwrap_until=315,
@@ -89,7 +89,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([2., 1., 1., .5, 1.0, 1.0, 1.0])
+        weights = np.array([.5, 1., 1., .5, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
