@@ -23,9 +23,9 @@ if __name__ == 'config':
     target_maps = {}
     nside = fs.set_default_nside(nside=32)  # Required
 
-    target_maps['i'] = fs.generate_goal_map(NES_fraction=.8,
-                                            WFD_fraction=1.0, SCP_fraction=.8,
-                                            GP_fraction=.8,
+    target_maps['i'] = fs.generate_goal_map(NES_fraction=.1,
+                                            WFD_fraction=0.8, SCP_fraction=.05,
+                                            GP_fraction=.05,
                                             WFD_upper_edge_fraction=0.0,
                                             nside=nside,
                                             generate_id_map=True)
@@ -57,7 +57,7 @@ if __name__ == 'config':
     for filtername in filters:
         bfs = list()
         # bfs.append(fs.M5_diff_basis_function(filtername=filtername, nside=nside))
-        bfs.append(fs.HourAngle_bonus_basis_function(max_hourangle=6.))
+        bfs.append(fs.HourAngle_bonus_basis_function(max_hourangle=4.))
         #     bfs.append(fs.Skybrightness_limit_basis_function(nside=nside,
         #                                                      filtername=filtername,
         #                                                      min=sb_limit_map[filtername]['min'],
@@ -81,7 +81,7 @@ if __name__ == 'config':
         #                                            unseen_before_lag=True,
         #                                            proportion=None,
         #                                            aways_available=filtername in 'rizy'))
-        bfs.append(fs.Avoid_Fast_Revists(filtername=None, gap_min=120., nside=nside))  # Hide region for 2 hours!
+        bfs.append(fs.Avoid_Fast_Revists(filtername=None, gap_min=30., nside=nside))  # Hide region for 0.5 hours
         bfs.append(fs.Bulk_cloud_basis_function(max_cloud_map=cloud_map, nside=nside))
         bfs.append(fs.Moon_avoidance_basis_function(nside=nside, moon_distance=40.))
         # bfs.append(fs.CableWrap_unwrap_basis_function(nside=nside, activate_tol=70., unwrap_until=315,
@@ -89,7 +89,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([.5, 1., 1., .5, 1.0, 1.0, 1.0])
+        weights = np.array([1., 1., 1., .5, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
