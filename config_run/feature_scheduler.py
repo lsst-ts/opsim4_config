@@ -45,7 +45,7 @@ if __name__ == 'config':
 
     patches.append({'ha_min': 2.5, 'ha_max': 21.5,
                     'alt_max': 82., 'alt_min': 74.,
-                    'dec_min': -30.2444 - 9., 'dec_max': -30.2444 + 9.,
+                    'dec_min': -30.2444 - 8., 'dec_max': -30.2444 + 8.,
                     'az_min': 0., 'az_max': 360.,
                     'weight': 1.0})
 
