@@ -23,9 +23,9 @@ if __name__ == 'config':
     target_maps = {}
     nside = fs.set_default_nside(nside=32)  # Required
 
-    target_maps['i'] = fs.generate_goal_map(NES_fraction=0.87,
-                                            WFD_fraction=1.0, SCP_fraction=0.88,
-                                            GP_fraction=.89,
+    target_maps['i'] = fs.generate_goal_map(NES_fraction=0.1,
+                                            WFD_fraction=.8, SCP_fraction=0.05,
+                                            GP_fraction=.05,
                                             WFD_upper_edge_fraction=0.0,
                                             nside=nside,
                                             generate_id_map=True)
