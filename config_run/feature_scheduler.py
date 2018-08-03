@@ -36,10 +36,10 @@ if __name__ == 'config':
                                             gp_cloud_max=0.7,
                                             nes_cloud_max=0.7)
 
-    width = (20.,)
-    z_pad = (28.,)
-    weight = (1.,)
-    height = (80.,)
+    width = (16, 20.,)
+    z_pad = (10, 28.,)
+    weight = (1.0, 0.9,)
+    height = (9., 80.,)
 
     # filters = ['u', 'g', 'r', 'i', 'z', 'y']
     filters = ['i']
