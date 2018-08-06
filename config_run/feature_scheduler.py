@@ -37,9 +37,9 @@ if __name__ == 'config':
                                             nes_cloud_max=0.7)
 
     width = (16, 20.,)
-    z_pad = (16, 28.,)
+    z_pad = (10, 28.,)
     weight = (1.0, 0.9,)
-    height = (10., 80.,)
+    height = (8.5, 80.,)
 
     # patches = []
     #
