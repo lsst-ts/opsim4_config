@@ -36,45 +36,45 @@ if __name__ == 'config':
                                             gp_cloud_max=0.7,
                                             nes_cloud_max=0.7)
 
-    # width = (16, 20.,)
-    # z_pad = (10, 28.,)
-    # weight = (1.0, 0.9,)
-    # height = (9., 80.,)
+    width = (16, 20.,)
+    z_pad = (16, 28.,)
+    weight = (1.0, 0.9,)
+    height = (10., 80.,)
 
-    patches = []
-
-    patches.append({'ha_min': 2.5, 'ha_max': 21.5,
-                    'alt_max': 82., 'alt_min': 74.,
-                    'dec_min': -30.2444 - 8., 'dec_max': -30.2444 + 8.,
-                    'az_min': 0., 'az_max': 360.,
-                    'weight': 1.0})
-
-    patches.append({'ha_min': 4., 'ha_max': 23.9,
-                    'alt_max': 82., 'alt_min': 65.,
-                    'dec_min': -89., 'dec_max': 10.,
-                    'az_min': 0., 'az_max': 360.,
-                    'weight': .9})
-
-    patches.append({'ha_min': 0., 'ha_max': 20.,
-                    'alt_max': 82., 'alt_min': 65.,
-                    'dec_min': -89., 'dec_max': 10.,
-                    'az_min': 0., 'az_max': 360.,
-                    'weight': .9})
-
-    az = 30
-    patches.append({'alt_max': 82., 'alt_min': 20.,
-                    'dec_min': -90, 'dec_max': 90,
-                    'az_min': 0., 'az_max': az,
-                    'weight': .9})
-    patches.append({'alt_max': 82., 'alt_min': 20.,
-                    'dec_min': -90, 'dec_max': 90,
-                    'az_min': 360. - az, 'az_max': 360.,
-                    'weight': .9})
-
-    patches.append({'alt_max': 82., 'alt_min': 20.,
-                    'dec_min': -90, 'dec_max': 90,
-                    'az_min': 180. - az, 'az_max': 180. + az,
-                    'weight': .9})
+    # patches = []
+    #
+    # patches.append({'ha_min': 2.5, 'ha_max': 21.5,
+    #                 'alt_max': 82., 'alt_min': 74.,
+    #                 'dec_min': -30.2444 - 8., 'dec_max': -30.2444 + 8.,
+    #                 'az_min': 0., 'az_max': 360.,
+    #                 'weight': 1.0})
+    #
+    # patches.append({'ha_min': 4., 'ha_max': 23.9,
+    #                 'alt_max': 82., 'alt_min': 65.,
+    #                 'dec_min': -89., 'dec_max': 10.,
+    #                 'az_min': 0., 'az_max': 360.,
+    #                 'weight': .9})
+    #
+    # patches.append({'ha_min': 0., 'ha_max': 20.,
+    #                 'alt_max': 82., 'alt_min': 65.,
+    #                 'dec_min': -89., 'dec_max': 10.,
+    #                 'az_min': 0., 'az_max': 360.,
+    #                 'weight': .9})
+    #
+    # az = 30
+    # patches.append({'alt_max': 82., 'alt_min': 20.,
+    #                 'dec_min': -90, 'dec_max': 90,
+    #                 'az_min': 0., 'az_max': az,
+    #                 'weight': .9})
+    # patches.append({'alt_max': 82., 'alt_min': 20.,
+    #                 'dec_min': -90, 'dec_max': 90,
+    #                 'az_min': 360. - az, 'az_max': 360.,
+    #                 'weight': .9})
+    #
+    # patches.append({'alt_max': 82., 'alt_min': 20.,
+    #                 'dec_min': -90, 'dec_max': 90,
+    #                 'az_min': 180. - az, 'az_max': 180. + az,
+    #                 'weight': .9})
 
     # filters = ['u', 'g', 'r', 'i', 'z', 'y']
     filters = ['i']
@@ -100,12 +100,12 @@ if __name__ == 'config':
         bfs.append(fs.Normalized_Target_map_basis_function(filtername=filtername,
                                                            target_map=target_maps[filtername][0],
                                                            out_of_bounds_val=hp.UNSEEN, nside=nside, max_diff=1.))
-        # bfs.append(fs.MeridianStripeBasisFunction(nside=nside, width=width,
-        #                                           weight=weight,
-        #                                           height=height,
-        #                                           zenith_pad=z_pad))
-        bfs.append(fs.HADecAltAzPatchBasisFunction(nside=nside,
-                                                   patches=patches[::-1]))
+        bfs.append(fs.MeridianStripeBasisFunction(nside=nside, width=width,
+                                                  weight=weight,
+                                                  height=height,
+                                                  zenith_pad=z_pad))
+        # bfs.append(fs.HADecAltAzPatchBasisFunction(nside=nside,
+        #                                            patches=patches[::-1]))
         bfs.append(fs.Agreesive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=120.))
         # bfs.append(fs.Strict_filter_basis_function(filtername=filtername,
         #                                            tag=[3],
