@@ -84,7 +84,7 @@ if __name__ == 'config':
     #                 'weight': .9})
 
     # filters = ['u', 'g', 'r', 'i', 'z', 'y']
-    filters = ['i']
+    filters = ['r', 'i']
     surveys = []
 
     sb_limit_map = fs.utils.generate_sb_map(target_maps, filters)
