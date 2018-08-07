@@ -116,7 +116,7 @@ if __name__ == 'config':
                                                   zenith_pad=z_pad))
         # bfs.append(fs.HADecAltAzPatchBasisFunction(nside=nside,
         #                                            patches=patches[::-1]))
-        bfs.append(fs.Agreesive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=120.))
+        bfs.append(fs.Aggressive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=120.))
         bfs.append(fs.Goal_Strict_filter_basis_function(filtername=filtername,
                                                         tag=None,
                                                         time_lag_min=90.,
