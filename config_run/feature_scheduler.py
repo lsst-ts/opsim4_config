@@ -109,7 +109,7 @@ if __name__ == 'config':
         #                                                      max=sb_limit_map[filtername]['max']))
         bfs.append(fs.Normalized_Target_map_basis_function(filtername=filtername,
                                                            target_map=target_maps[filtername][0],
-                                                           out_of_bounds_val=hp.UNSEEN, nside=nside, max_diff=1.))
+                                                           out_of_bounds_val=hp.UNSEEN, nside=nside))
         bfs.append(fs.MeridianStripeBasisFunction(nside=nside, width=width,
                                                   weight=weight,
                                                   height=height,
