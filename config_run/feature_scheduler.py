@@ -30,6 +30,13 @@ if __name__ == 'config':
                                             nside=nside,
                                             generate_id_map=True)
 
+    target_maps['r'] = fs.generate_goal_map(NES_fraction=0.1,
+                                            WFD_fraction=.8, SCP_fraction=0.05,
+                                            GP_fraction=.05,
+                                            WFD_upper_edge_fraction=0.0,
+                                            nside=nside,
+                                            generate_id_map=True)
+
     cloud_map = fs.utils.generate_cloud_map(target_maps, filtername='i',
                                             wfd_cloud_max=0.7,
                                             scp_cloud_max=0.7,
@@ -89,6 +96,9 @@ if __name__ == 'config':
                    'z': 0.194,
                    'y': 0.194}
 
+    filter_prop = {'r': 0.5,
+                   'i': 0.5}
+
     for filtername in filters:
         bfs = list()
         # bfs.append(fs.M5_diff_basis_function(filtername=filtername, nside=nside))
@@ -107,15 +117,15 @@ if __name__ == 'config':
         # bfs.append(fs.HADecAltAzPatchBasisFunction(nside=nside,
         #                                            patches=patches[::-1]))
         bfs.append(fs.Agreesive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=120.))
-        # bfs.append(fs.Strict_filter_basis_function(filtername=filtername,
-        #                                            tag=[3],
-        #                                            time_lag_min=90.,
-        #                                            time_lag_max=150.,
-        #                                            time_lag_boost=180.,
-        #                                            boost_gain=1.0,
-        #                                            unseen_before_lag=True,
-        #                                            proportion=None,
-        #                                            aways_available=filtername in 'rizy'))
+        bfs.append(fs.Goal_Strict_filter_basis_function(filtername=filtername,
+                                                        tag=None,
+                                                        time_lag_min=90.,
+                                                        time_lag_max=150.,
+                                                        time_lag_boost=180.,
+                                                        boost_gain=2.0,
+                                                        unseen_before_lag=True,
+                                                        proportion=filter_prop[filtername],
+                                                        aways_available=True))
         bfs.append(fs.Avoid_Fast_Revists(filtername=None, gap_min=30., nside=nside))  # Hide region for 0.5 hours
         bfs.append(fs.Bulk_cloud_basis_function(max_cloud_map=cloud_map, nside=nside))
         bfs.append(fs.Moon_avoidance_basis_function(nside=nside, moon_distance=40.))
@@ -124,7 +134,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([.5, 1., 1., .5, 1.0, 1.0, 1.0])
+        weights = np.array([.5, 1., 1., .5, 1.0, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
