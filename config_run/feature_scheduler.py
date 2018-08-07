@@ -37,9 +37,9 @@ if __name__ == 'config':
                                             nes_cloud_max=0.7)
 
     width = (16, 20.,)
-    z_pad = (10, 28.,)
+    z_pad = (7, 28.,)
     weight = (1.0, 0.9,)
-    height = (8.5, 80.,)
+    height = (7.5, 80.,)
 
     # patches = []
     #
@@ -124,7 +124,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([1., 1., 1., .5, 1.0, 1.0, 1.0])
+        weights = np.array([.5, 1., 1., .5, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
