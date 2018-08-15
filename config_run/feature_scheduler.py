@@ -20,96 +20,50 @@ if __name__ == 'config':
     survey_topology.num_seq_props = 1
     survey_topology.sequence_propos = ["DeepDrillingCosmology1"]
 
-    target_maps = {}
     nside = fs.set_default_nside(nside=32)  # Required
 
-    target_maps['u'] = fs.generate_goal_map(NES_fraction=0.,
-                                            WFD_fraction=.043, SCP_fraction=0.017,
-                                            GP_fraction=.017,
-                                            WFD_upper_edge_fraction=0.0,
-                                            nside=nside,
+    target_maps = {}
+    target_maps['u'] = fs.generate_goal_map(nside=nside, NES_fraction=0.,
+                                            WFD_fraction=0.31, SCP_fraction=0.15,
+                                            GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                            generate_id_map=True)
+    target_maps['g'] = fs.generate_goal_map(nside=nside, NES_fraction=0.2,
+                                            WFD_fraction=0.44, SCP_fraction=0.15,
+                                            GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                            generate_id_map=True)
+    target_maps['r'] = fs.generate_goal_map(nside=nside, NES_fraction=0.46,
+                                            WFD_fraction=1.0, SCP_fraction=0.15,
+                                            GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                            generate_id_map=True)
+    target_maps['i'] = fs.generate_goal_map(nside=nside, NES_fraction=0.46,
+                                            WFD_fraction=1.0, SCP_fraction=0.15,
+                                            GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                            generate_id_map=True)
+    target_maps['z'] = fs.generate_goal_map(nside=nside, NES_fraction=0.4,
+                                            WFD_fraction=0.9, SCP_fraction=0.15,
+                                            GP_fraction=0.15, WFD_upper_edge_fraction=0.,
+                                            generate_id_map=True)
+    target_maps['y'] = fs.generate_goal_map(nside=nside, NES_fraction=0.,
+                                            WFD_fraction=0.9, SCP_fraction=0.15,
+                                            GP_fraction=0.15, WFD_upper_edge_fraction=0.,
                                             generate_id_map=True)
 
-    target_maps['g'] = fs.generate_goal_map(NES_fraction=0.023,
-                                            WFD_fraction=.06, SCP_fraction=0.017,
-                                            GP_fraction=.017,
-                                            WFD_upper_edge_fraction=0.0,
-                                            nside=nside,
-                                            generate_id_map=True)
+    target_2normfactor = {}
+    for filtername in target_maps:
+        target_2normfactor[filtername] = target_maps[filtername][0]
 
-    target_maps['r'] = fs.generate_goal_map(NES_fraction=0.023,
-                                            WFD_fraction=0.14, SCP_fraction=0.017,
-                                            GP_fraction=.017,
-                                            WFD_upper_edge_fraction=0.0,
-                                            nside=nside,
-                                            generate_id_map=True)
+    norm_factor = fs.calc_norm_factor(target_2normfactor)
 
-    target_maps['i'] = fs.generate_goal_map(NES_fraction=0.052,
-                                            WFD_fraction=.14, SCP_fraction=0.017,
-                                            GP_fraction=.017,
-                                            WFD_upper_edge_fraction=0.0,
-                                            nside=nside,
-                                            generate_id_map=True)
+    cloud_map = fs.generate_cloud_map(target_maps, filtername='i',
+                                      wfd_cloud_max=0.7,
+                                      scp_cloud_max=0.7,
+                                      gp_cloud_max=0.7,
+                                      nes_cloud_max=0.7)
 
-    target_maps['z'] = fs.generate_goal_map(NES_fraction=0.046,
-                                            WFD_fraction=.12, SCP_fraction=0.017,
-                                            GP_fraction=.017,
-                                            WFD_upper_edge_fraction=0.0,
-                                            nside=nside,
-                                            generate_id_map=True)
-
-    target_maps['y'] = fs.generate_goal_map(NES_fraction=0.0,
-                                            WFD_fraction=.12, SCP_fraction=0.017,
-                                            GP_fraction=.017,
-                                            WFD_upper_edge_fraction=0.0,
-                                            nside=nside,
-                                            generate_id_map=True)
-
-    cloud_map = fs.utils.generate_cloud_map(target_maps, filtername='i',
-                                            wfd_cloud_max=0.7,
-                                            scp_cloud_max=0.7,
-                                            gp_cloud_max=0.7,
-                                            nes_cloud_max=0.7)
-
-    width = (16, 20.,)
-    z_pad = (7, 28.,)
-    weight = (1.0, 0.9,)
-    height = (7.5, 80.,)
-
-    # patches = []
-    #
-    # patches.append({'ha_min': 2.5, 'ha_max': 21.5,
-    #                 'alt_max': 82., 'alt_min': 74.,
-    #                 'dec_min': -30.2444 - 8., 'dec_max': -30.2444 + 8.,
-    #                 'az_min': 0., 'az_max': 360.,
-    #                 'weight': 1.0})
-    #
-    # patches.append({'ha_min': 4., 'ha_max': 23.9,
-    #                 'alt_max': 82., 'alt_min': 65.,
-    #                 'dec_min': -89., 'dec_max': 10.,
-    #                 'az_min': 0., 'az_max': 360.,
-    #                 'weight': .9})
-    #
-    # patches.append({'ha_min': 0., 'ha_max': 20.,
-    #                 'alt_max': 82., 'alt_min': 65.,
-    #                 'dec_min': -89., 'dec_max': 10.,
-    #                 'az_min': 0., 'az_max': 360.,
-    #                 'weight': .9})
-    #
-    # az = 30
-    # patches.append({'alt_max': 82., 'alt_min': 20.,
-    #                 'dec_min': -90, 'dec_max': 90,
-    #                 'az_min': 0., 'az_max': az,
-    #                 'weight': .9})
-    # patches.append({'alt_max': 82., 'alt_min': 20.,
-    #                 'dec_min': -90, 'dec_max': 90,
-    #                 'az_min': 360. - az, 'az_max': 360.,
-    #                 'weight': .9})
-    #
-    # patches.append({'alt_max': 82., 'alt_min': 20.,
-    #                 'dec_min': -90, 'dec_max': 90,
-    #                 'az_min': 180. - az, 'az_max': 180. + az,
-    #                 'weight': .9})
+    width = (20.,)
+    z_pad = (28.,)
+    weight = (1.0,)
+    height = (80.,)
 
     filters = ['u', 'g', 'r', 'i', 'z', 'y']
     # filters = ['r', 'i']
@@ -128,13 +82,15 @@ if __name__ == 'config':
         bfs = list()
         # bfs.append(fs.M5_diff_basis_function(filtername=filtername, nside=nside))
         bfs.append(fs.HourAngle_bonus_basis_function(max_hourangle=4.))
+        bfs.append(fs.M5_diff_basis_function(filtername=filtername, nside=nside))
         #     bfs.append(fs.Skybrightness_limit_basis_function(nside=nside,
         #                                                      filtername=filtername,
         #                                                      min=sb_limit_map[filtername]['min'],
         #                                                      max=sb_limit_map[filtername]['max']))
-        bfs.append(fs.Normalized_Target_map_basis_function(filtername=filtername,
-                                                           target_map=target_maps[filtername][0],
-                                                           out_of_bounds_val=hp.UNSEEN, nside=nside))
+        bfs.append(fs.Target_map_basis_function(filtername=filtername,
+                                                target_map=target_maps[filtername][0],
+                                                out_of_bounds_val=hp.UNSEEN, nside=nside,
+                                                norm_factor=norm_factor))
         bfs.append(fs.MeridianStripeBasisFunction(nside=nside, width=width,
                                                   weight=weight,
                                                   height=height,
@@ -149,7 +105,7 @@ if __name__ == 'config':
                                                         time_lag_boost=180.,
                                                         boost_gain=2.0,
                                                         unseen_before_lag=True,
-                                                        proportion=filter_prop[filtername],
+                                                        proportion=1.,
                                                         aways_available=True))
         bfs.append(fs.Avoid_Fast_Revists(filtername=None, gap_min=30., nside=nside))  # Hide region for 0.5 hours
         bfs.append(fs.Bulk_cloud_basis_function(max_cloud_map=cloud_map, nside=nside))
@@ -159,7 +115,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([.5, 1., 1., .5, 1.0, 1.0, 1.0, 1.0])
+        weights = np.array([0.5, 1., .1, 1., .5, 1.0, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
