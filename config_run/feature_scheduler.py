@@ -78,6 +78,13 @@ if __name__ == 'config':
                    'z': 0.200,
                    'y': 0.154}
 
+    target_map_weights = {'u': 0.1,
+                          'g': 0.1,
+                          'r': 0.075,
+                          'i': 0.05,
+                          'z': 0.05,
+                          'y': 0.05}
+
     for filtername in filters:
         bfs = list()
         # bfs.append(fs.M5_diff_basis_function(filtername=filtername, nside=nside))
@@ -115,7 +122,7 @@ if __name__ == 'config':
         # bfs.append(fs.NorthSouth_scan_basis_function(length=70.))
 
         # weights = np.array([2., 0.1, 0.1, 1., 3., 1.5, 1.0, 1.0, 1.0])
-        weights = np.array([0.5, 1., .05, 1., .5, 1.0, 1.0, 1.0, 1.0])
+        weights = np.array([0.5, 1., target_map_weights[filtername], 1., .5, 1.0, 1.0, 1.0, 1.0])
         surveys.append(fs.Greedy_survey_fields(bfs, weights, block_size=1,
                                                filtername=filtername, dither=True,
                                                nside=nside,
