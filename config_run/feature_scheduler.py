@@ -107,9 +107,9 @@ if __name__ == 'config':
         bfs.append(fs.Aggressive_Slewtime_basis_function(filtername=filtername, nside=nside, order=6., hard_max=120.))
         bfs.append(fs.Goal_Strict_filter_basis_function(filtername=filtername,
                                                         tag=None,
-                                                        time_lag_min=90.,
-                                                        time_lag_max=150.,
-                                                        time_lag_boost=180.,
+                                                        time_lag_min=180.,
+                                                        time_lag_max=240.,
+                                                        time_lag_boost=300.,
                                                         boost_gain=2.0,
                                                         unseen_before_lag=True,
                                                         proportion=1.,
