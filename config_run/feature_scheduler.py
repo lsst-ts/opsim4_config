@@ -147,82 +147,85 @@ if __name__ == 'config':
     pairs_bfs.append(fs.MeridianStripeBasisFunction(nside=nside, zenith_pad=(45.,), width=(35.,)))
     pairs_bfs.append(fs.Moon_avoidance_basis_function(nside=nside, moon_distance=30.))
 
-    surveys.append(fs.Pairs_survey_scripted(pairs_bfs, [1., 1., 1.], ignore_obs='DD', min_alt=20.,
-                                            filt_to_pair='gri'))
+    pair_survey = [fs.Pairs_survey_scripted(pairs_bfs, [1., 1., 1.], ignore_obs='DD', min_alt=20.,
+                                            filt_to_pair='gri')]
+    # surveys.append(fs.Pairs_survey_scripted(pairs_bfs, [1., 1., 1.], ignore_obs='DD', min_alt=20.,
+    #                                         filt_to_pair='gri'))
     # surveys.append(fs.Pairs_different_filters_scripted(pairs_bfs, [1., 1., 1.], ignore_obs='DD', min_alt=20.,
     #                                                    filter_goals=filter_prop))
     # surveys.append(fs.Pairs_survey_scripted([], [], ignore_obs='DD'))
 
     # Set up the DD
     # ELAIS S1
-    surveys.append(fs.Deep_drilling_survey(9.45, -44., sequence='rgizy',
-                                           nvis=[20, 10, 20, 26, 20],
-                                           survey_name='DD:ELAISS1', reward_value=100, moon_up=None,
-                                           fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside,
-                                           avoid_same_day=True,
-                                           filter_goals=filter_prop))
-    surveys.append(fs.Deep_drilling_survey(9.45, -44., sequence='u',
-                                           nvis=[7],
-                                           survey_name='DD:u,ELAISS1', reward_value=100, moon_up=False,
-                                           fraction_limit=0.0012, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside))
+    dd_surveys = list()
+    dd_surveys.append(fs.Deep_drilling_survey(9.45, -44., sequence='rgizy',
+                                              nvis=[20, 10, 20, 26, 20],
+                                              survey_name='DD:ELAISS1', reward_value=100, moon_up=None,
+                                              fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside,
+                                              avoid_same_day=True,
+                                              filter_goals=filter_prop))
+    dd_surveys.append(fs.Deep_drilling_survey(9.45, -44., sequence='u',
+                                              nvis=[7],
+                                              survey_name='DD:u,ELAISS1', reward_value=100, moon_up=False,
+                                              fraction_limit=0.0012, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside))
 
     # XMM-LSS
-    surveys.append(fs.Deep_drilling_survey(35.708333, -4 - 45 / 60., sequence='rgizy',
-                                           nvis=[20, 10, 20, 26, 20],
-                                           survey_name='DD:XMM-LSS', reward_value=100, moon_up=None,
-                                           fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside,
-                                           avoid_same_day=True,
-                                           filter_goals=filter_prop))
-    surveys.append(fs.Deep_drilling_survey(35.708333, -4 - 45 / 60., sequence='u',
-                                           nvis=[7],
-                                           survey_name='DD:u,XMM-LSS', reward_value=100, moon_up=False,
-                                           fraction_limit=0.0012, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside))
+    dd_surveys.append(fs.Deep_drilling_survey(35.708333, -4 - 45 / 60., sequence='rgizy',
+                                              nvis=[20, 10, 20, 26, 20],
+                                              survey_name='DD:XMM-LSS', reward_value=100, moon_up=None,
+                                              fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside,
+                                              avoid_same_day=True,
+                                              filter_goals=filter_prop))
+    dd_surveys.append(fs.Deep_drilling_survey(35.708333, -4 - 45 / 60., sequence='u',
+                                              nvis=[7],
+                                              survey_name='DD:u,XMM-LSS', reward_value=100, moon_up=False,
+                                              fraction_limit=0.0012, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside))
 
     # Extended Chandra Deep Field South
     # XXX--Note, this one can pass near zenith. Should go back and add better planning on this.
-    surveys.append(fs.Deep_drilling_survey(53.125, -28. - 6 / 60., sequence='rgizy',
-                                           nvis=[20, 10, 20, 26, 20],
-                                           survey_name='DD:ECDFS', reward_value=100, moon_up=None,
-                                           fraction_limit=0.148, ha_limits=[[0.5, 1.0], [23., 22.5]],
-                                           nside=nside,
-                                           avoid_same_day=True,
-                                           filter_goals=filter_prop))
-    surveys.append(fs.Deep_drilling_survey(53.125, -28. - 6 / 60., sequence='u',
-                                           nvis=[7],
-                                           survey_name='DD:u,ECDFS', reward_value=100, moon_up=False,
-                                           fraction_limit=0.0012, ha_limits=[[0.5, 1.0], [23., 22.5]],
-                                           nside=nside))
+    dd_surveys.append(fs.Deep_drilling_survey(53.125, -28. - 6 / 60., sequence='rgizy',
+                                              nvis=[20, 10, 20, 26, 20],
+                                              survey_name='DD:ECDFS', reward_value=100, moon_up=None,
+                                              fraction_limit=0.148, ha_limits=[[0.5, 1.0], [23., 22.5]],
+                                              nside=nside,
+                                              avoid_same_day=True,
+                                              filter_goals=filter_prop))
+    dd_surveys.append(fs.Deep_drilling_survey(53.125, -28. - 6 / 60., sequence='u',
+                                              nvis=[7],
+                                              survey_name='DD:u,ECDFS', reward_value=100, moon_up=False,
+                                              fraction_limit=0.0012, ha_limits=[[0.5, 1.0], [23., 22.5]],
+                                              nside=nside))
     # COSMOS
-    surveys.append(fs.Deep_drilling_survey(150.1, 2. + 10. / 60. + 55 / 3600., sequence='rgizy',
-                                           nvis=[20, 10, 20, 26, 20],
-                                           survey_name='DD:COSMOS', reward_value=100, moon_up=None,
-                                           fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside,
-                                           avoid_same_day=True,
-                                           filter_goals=filter_prop))
-    surveys.append(fs.Deep_drilling_survey(150.1, 2. + 10. / 60. + 55 / 3600., sequence='u',
-                                           nvis=[7], ha_limits=([0., .5], [23.5, 24.]),
-                                           survey_name='DD:u,COSMOS', reward_value=100, moon_up=False,
-                                           fraction_limit=0.0012,
-                                           nside=nside))
+    dd_surveys.append(fs.Deep_drilling_survey(150.1, 2. + 10. / 60. + 55 / 3600., sequence='rgizy',
+                                              nvis=[20, 10, 20, 26, 20],
+                                              survey_name='DD:COSMOS', reward_value=100, moon_up=None,
+                                              fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside,
+                                              avoid_same_day=True,
+                                              filter_goals=filter_prop))
+    dd_surveys.append(fs.Deep_drilling_survey(150.1, 2. + 10. / 60. + 55 / 3600., sequence='u',
+                                              nvis=[7], ha_limits=([0., .5], [23.5, 24.]),
+                                              survey_name='DD:u,COSMOS', reward_value=100, moon_up=False,
+                                              fraction_limit=0.0012,
+                                              nside=nside))
 
     # Extra DD Field, just to get to 5. Still not closed on this one
-    surveys.append(fs.Deep_drilling_survey(349.386443, -63.321004, sequence='rgizy',
-                                           nvis=[20, 10, 20, 26, 20],
-                                           survey_name='DD:290', reward_value=100, moon_up=None,
-                                           fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside,
-                                           avoid_same_day=True,
-                                           filter_goals=filter_prop))
-    surveys.append(fs.Deep_drilling_survey(349.386443, -63.321004, sequence='u',
-                                           nvis=[7],
-                                           survey_name='DD:u,290', reward_value=100, moon_up=False,
-                                           fraction_limit=0.0012, ha_limits=([0., 0.5], [23.5, 24.]),
-                                           nside=nside,
-                                           filter_goals=filter_prop))
+    dd_surveys.append(fs.Deep_drilling_survey(349.386443, -63.321004, sequence='rgizy',
+                                              nvis=[20, 10, 20, 26, 20],
+                                              survey_name='DD:290', reward_value=100, moon_up=None,
+                                              fraction_limit=0.148, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside,
+                                              avoid_same_day=True,
+                                              filter_goals=filter_prop))
+    dd_surveys.append(fs.Deep_drilling_survey(349.386443, -63.321004, sequence='u',
+                                              nvis=[7],
+                                              survey_name='DD:u,290', reward_value=100, moon_up=False,
+                                              fraction_limit=0.0012, ha_limits=([0., 0.5], [23.5, 24.]),
+                                              nside=nside,
+                                              filter_goals=filter_prop))
 
-    scheduler = fs.Core_scheduler(surveys, nside=nside)  # Required
+    scheduler = fs.Core_scheduler([dd_surveys, pair_survey, surveys], nside=nside)  # Required
